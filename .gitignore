@@ -1,0 +1,13 @@
+/.settings/
+/.vagrant/
+/bin/
+/target/
+/apache-storm-0.9.5/
+/zookeeper-3.4.8/
+/kafka/
+/apache-storm-0.9.5.zip
+/kafka_2.10-0.8.2.0.tgz
+/zookeeper-3.4.8.tar.gz
+/apache-storm-0.10.0/
+/apache-storm-0.10.0.zip
+/bin/

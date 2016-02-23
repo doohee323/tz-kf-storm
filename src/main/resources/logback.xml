@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<timestamp key="bySecond" datePattern="yyyyMMddHH" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%message%n%xException{5}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="tz-storm4" class="ch.qos.logback.core.FileAppender">
+		<file>data/tz-storm4.log</file>
+		<append>false</append>
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="tz-storm5" class="ch.qos.logback.core.FileAppender">
+		<file>data/tz-storm5.log</file>
+		<append>false</append>
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="example4.tzstorm.spout" level="ERROR" additivity="false">
+		<appender-ref ref="tz-storm4" />
+	</logger>
+
+	<logger name="example5.tzstorm.bolt.TestBolt5" level="INFO"
+		additivity="false">
+		<appender-ref ref="tz-storm5" />
+	</logger>
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
