@@ -1,6 +1,5 @@
 /.settings/
 /.vagrant/
-/bin/
 /target/
 /apache-storm-0.9.5/
 /zookeeper-3.4.8/
@@ -10,4 +9,5 @@
 /zookeeper-3.4.8.tar.gz
 /apache-storm-0.10.0/
 /apache-storm-0.10.0.zip
-/bin/
+bin*
+.DS_Store
