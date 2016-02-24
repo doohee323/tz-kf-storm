@@ -1,6 +1,47 @@
 This is a Kafka-Storm-Esper example on vagrant.
 =====================================
 
+I. kafka test
+- requirement: 
+	- zookeeper & kafka-server
+	- topics
+	- producer / consumer
+
+wget http://apache.tt.co.kr/kafka/0.8.2.0/kafka_2.10-0.8.2.0.tgz
+tar -xzf kafka_2.10-0.8.2.0.tgz
+mv kafka_2.10-0.8.2.0 kafka
+cd kafka/bin
+
+cd /Users/dhong/Documents/workspace/etc/tz-kf-storm/kafka/bin
+1. run zookeeper & kafka-server(broker)
+./zookeeper-server-start.sh ../config/zookeeper.properties &
+./kafka-server-start.sh ../config/server.properties &
+
+2. create topic
+./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic logs
+./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic logs1
+#./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic sentences
+server.properties
+delete.topic.enable=true
+./kafka-topics.sh --delete --zookeeper localhost:2181 --delete --topic test
+# ./kafka-topics.sh --delete --zookeeper localhost:2181 --delete --topic sentences
+./kafka-topics.sh --list --zookeeper localhost:2181
+
+3. make producer
+./kafka-console-producer.sh --broker-list localhost:9092 --topic logs
+# ./kafka-console-producer.sh --broker-list localhost:9092 --topic sentences
+
+4. make consumer
+./kafka-console-consumer.sh --zookeeper localhost:2181 --topic logs --from-beginning
+# ./kafka-console-consumer.sh --zookeeper localhost:2181 --topic sentences --from-beginning
+
+5. typing "hello" on producer console
+
+II. storm-kafka test
+- requirement: 
+	- zookeeper & storm
+	- topology
+
 1. Make storm-kafka environment.
 
 	1.1 install storm
@@ -61,8 +102,11 @@ This is a Kafka-Storm-Esper example on vagrant.
 	storm kill TestTopology4
 	storm list
 	
-	storm jar /Users/dhong/Documents/workspace/etc/tz-kf-storm/target/tz-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar example5.tzstorm.TestTopology5 TestTopology5
-	 
+	storm jar /Users/dhong/Documents/workspace/java/kstorm/target/kstorm-1.0-SNAPSHOT-jar-with-dependencies.jar quux00.wordcount.kafka.WordCountNonAckedTopology
+	storm deactivate word-count-topology
+	storm kill word-count-topology
+	storm list
+
 4. test
 	Now you'll need to put some sentences into the sentence topic.
 	You can either do it manually with:
@@ -73,36 +117,7 @@ This is a Kafka-Storm-Esper example on vagrant.
 
 	    
 	    
-# kafka install test
-wget http://apache.tt.co.kr/kafka/0.8.2.0/kafka_2.10-0.8.2.0.tgz
-tar -xzf kafka_2.10-0.8.2.0.tgz
-mv kafka_2.10-0.8.2.0 kafka
-cd kafka/bin
 
-cd /Users/dhong/Documents/workspace/etc/tz-kf-storm/kafka/bin
-1. run zookeeper & kafka-server(broker)
-./zookeeper-server-start.sh ../config/zookeeper.properties &
-./kafka-server-start.sh ../config/server.properties &
-
-2. create topic
-./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic logs
-./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic logs1
-
-server.properties
-delete.topic.enable=true
-./kafka-topics.sh --delete --zookeeper localhost:2181 --delete --topic logs1
-
-./kafka-topics.sh --list --zookeeper localhost:2181
-
-3. make producer
-./kafka-console-producer.sh --broker-list localhost:9092 --topic logs
-
-4. make consumer
-./kafka-console-consumer.sh --zookeeper localhost:2181 --topic logs --from-beginning
-
-5. typing "hello" on producer console
-
-	    
 	    
 	    
 	    
