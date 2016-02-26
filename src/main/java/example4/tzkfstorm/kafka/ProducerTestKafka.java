@@ -1,4 +1,4 @@
-package example4.tzstorm.kafka;
+package example4.tzkfstorm.kafka;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -48,8 +48,11 @@ public class ProducerTestKafka {
 
 	private void populate() {
 		for (int i = 0; i < this.logData.size(); i++) {
-			System.out.println("=============" + this.logData.get(i).toString());
-			kproducer.send(new KeyedMessage<Object, String>(TOPIC, this.logData.get(i).toString()));
+//			System.out.println("=============" + this.logData.get(i).toString());
+//			kproducer.send(new KeyedMessage<Object, String>(TOPIC, this.logData.get(i).toString()));
+			String test = "id:" + i + " value:solr_message";
+			System.out.println("=============" + test);
+			kproducer.send(new KeyedMessage<Object, String>(TOPIC, test));
 		}
 		Utils.sleep(500);
 	}

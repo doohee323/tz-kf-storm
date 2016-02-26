@@ -87,17 +87,17 @@ II. storm-kafka test
 	mvn clean package
 	
 	4) kafka - storm(multiple bolts) example
-		/tz-storm/src/main/java/example4/tz-storm/TestTopology4.java
+		/tz-kf-storm/src/main/java/example4/tz-kf-storm/TestTopology4.java
 		4.1 run zookeeper & kafka-server(broker)
 		4.2 java  PopulateKafkaTopic
 	
 	5) storm + trident(unique data) + esper example
-		/tz-storm/src/main/java/example5/tz-storm/TestTopology5.java
+		/tz-kf-storm/src/main/java/example5/tz-kf-storm/TestTopology5.java
 
 3. deploy jar to storm
-	#storm jar /Users/dhong/Documents/workspace/etc/tz-kf-storm/target/tz-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.terry.storm.hellostorm.HelloTopology HelloTopology 
+	#storm jar /Users/dhong/Documents/workspace/etc/tz-kf-storm/target/tz-kf-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.terry.storm.hellostorm.HelloTopology HelloTopology 
 	
-	storm jar /Users/dhong/Documents/workspace/etc/tz-kf-storm/target/tz-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar example4.tzstorm.TestTopology4 TestTopology4
+	storm jar /Users/dhong/Documents/workspace/etc/tz-kf-storm/target/tz-kf-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar example4.tzkfstorm.TestTopology4 TestTopology4
 	storm deactivate TestTopology4
 	storm kill TestTopology4
 	storm list
