@@ -1,8 +1,8 @@
 This is a Kafka-Storm-Esper example on vagrant.
 =====================================
 
+1. case 1
 ```
-case 1) 
 	- install & run: zookeeper, kafka, storm, solr
 	- deploy topology to storm: TestTopology4
 	- test with kafka-console-consumer.sh & kafka-console-producer.sh
