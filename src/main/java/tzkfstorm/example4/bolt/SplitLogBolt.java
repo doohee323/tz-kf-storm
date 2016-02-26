@@ -1,4 +1,4 @@
-package example4.tzkfstorm.bolt;
+package tzkfstorm.example4.bolt;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
@@ -13,7 +13,7 @@ import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
-import example4.tzkfstorm.LogBean;
+import tzkfstorm.example4.LogBean;
 
 public class SplitLogBolt extends BaseRichBolt {
 

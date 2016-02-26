@@ -24,7 +24,7 @@
 		</encoder>
 	</appender>
 
-	<logger name="example4.tzkfstorm.spout" level="ERROR" additivity="false">
+	<logger name="tzkfstorm.example4.spout" level="ERROR" additivity="false">
 		<appender-ref ref="tz-kf-storm4" />
 	</logger>
 

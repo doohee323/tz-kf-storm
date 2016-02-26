@@ -1,4 +1,4 @@
-package example4.tzkfstorm;
+package tzkfstorm.example4;
 
 /**
  */

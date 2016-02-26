@@ -1,4 +1,4 @@
-package example4.tzkfstorm.kafka;
+package tzkfstorm.example4.kafka;
 
 import java.util.HashMap;
 import java.util.List;

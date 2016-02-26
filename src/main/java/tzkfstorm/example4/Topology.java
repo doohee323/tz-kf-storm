@@ -1,4 +1,4 @@
-package example4.tzkfstorm;
+package tzkfstorm.example4;
 
 import java.util.Properties;
 
@@ -6,12 +6,12 @@ import backtype.storm.Config;
 import backtype.storm.StormSubmitter;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
-import example4.tzkfstorm.bolt.BoltBuilder;
-import example4.tzkfstorm.bolt.CountBolt;
-import example4.tzkfstorm.bolt.ReportBolt;
-import example4.tzkfstorm.bolt.SolrBolt;
-import example4.tzkfstorm.bolt.SplitLogBolt;
-import example4.tzkfstorm.spout.SpoutBuilder;
+import tzkfstorm.example4.bolt.BoltBuilder;
+import tzkfstorm.example4.bolt.CountBolt;
+import tzkfstorm.example4.bolt.ReportBolt;
+import tzkfstorm.example4.bolt.SolrBolt;
+import tzkfstorm.example4.bolt.SplitLogBolt;
+import tzkfstorm.example4.spout.SpoutBuilder;
 import storm.kafka.KafkaSpout;
 
 /**

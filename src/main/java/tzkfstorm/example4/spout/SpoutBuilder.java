@@ -1,9 +1,9 @@
-package example4.tzkfstorm.spout;
+package tzkfstorm.example4.spout;
 
 import java.util.Properties;
 
 import backtype.storm.spout.SchemeAsMultiScheme;
-import example4.tzkfstorm.Keys;
+import tzkfstorm.example4.Keys;
 import storm.kafka.BrokerHosts;
 import storm.kafka.KafkaSpout;
 import storm.kafka.SpoutConfig;

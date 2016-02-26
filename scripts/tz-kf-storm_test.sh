@@ -8,7 +8,7 @@ echo ### [deploy test topology] ################################################
 cd /vagrant
 mvn clean package
 
-storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar example4.tzkfstorm.Topology
+storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example4.Topology
 #storm deactivate TestTopology4
 #storm kill TestTopology4
 #storm list
@@ -33,7 +33,7 @@ comment like this
 cd /vagrant
 mvn clean package
 
-java -cp target/tz-kf-storm-0.0.1-SNAPSHOT.jar example4.tzkfstorm.kafka.ProducerTestKafka
+java -cp target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example4.kafka.ProducerTestKafka
 
 # remove data / logs
 rm -Rf $HOME/apache-storm-0.10.0/logs/*

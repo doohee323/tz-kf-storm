@@ -1,8 +1,8 @@
-package example4.tzkfstorm.bolt;
+package tzkfstorm.example4.bolt;
 
 import java.util.Properties;
 
-import example4.tzkfstorm.Keys;
+import tzkfstorm.example4.Keys;
 
 /**
  */

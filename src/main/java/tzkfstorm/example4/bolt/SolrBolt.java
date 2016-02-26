@@ -1,4 +1,4 @@
-package example4.tzkfstorm.bolt;
+package tzkfstorm.example4.bolt;
 
 import java.util.Map;
 

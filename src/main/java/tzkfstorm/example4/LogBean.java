@@ -1,4 +1,4 @@
-package example4.tzkfstorm;
+package tzkfstorm.example4;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
