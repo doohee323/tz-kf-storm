@@ -26,7 +26,7 @@ public class Topology {
 	public Topology(String configFile) throws Exception {
 		configs = new Properties();
 		try {
-			configs.load(Topology.class.getResourceAsStream("/default_config.properties"));
+			configs.load(Topology.class.getResourceAsStream("/example4.properties"));
 			boltBuilder = new BoltBuilder(configs);
 			spoutBuilder = new SpoutBuilder(configs);
 		} catch (Exception ex) {
@@ -88,7 +88,7 @@ public class Topology {
 	public static void main(String[] args) throws Exception {
 		String configFile;
 		if (args.length == 0) {
-			configFile = "default_config.properties";
+			configFile = "example4.properties";
 		} else {
 			configFile = args[0];
 		}
