@@ -34,6 +34,7 @@ export GROUP=staff
 #export USER=vagrant
 #export GROUP=vagrant
 
+cd /vagrant/scripts
 ./tz-kf-storm_install.sh
 
 cp -r /vagrant/etc/solr/schema.xml $HOME/solr-5.3.1/server/solr/collection1/conf/schema.xml
