@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin
+
 echo ### [1. run zookeeper] ############################################################################################################
 cd $HOME/zookeeper-3.4.8/bin
 zkServer.sh start # zkServer.sh restart
@@ -7,6 +9,7 @@ zkServer.sh start # zkServer.sh restart
 echo ### [2. run apache-kafka] ############################################################################################################
 cd $HOME/kafka
 bin/kafka-server-start.sh ./config/server.properties &		# bin/zookeeper-server-stop.sh
+sleep 10
 bin/kafka-topics.sh --create --topic logs --zookeeper 127.0.0.1:2181 --partitions 1 --replication-factor 1
 #bin/kafka-topics.sh --delete --topic logs --zookeeper 127.0.0.1:2181
 #Created topic "logs"

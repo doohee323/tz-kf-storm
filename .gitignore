@@ -11,3 +11,4 @@
 /apache-storm-0.10.0.zip
 bin*
 .DS_Store
+/solr-5.3.1/

@@ -25,7 +25,6 @@ solr id:2 value:solr_message
 hdfs this message goes to hdfs
 mongo id:1 value:mongodb_message
 
-#hdfs -> http://127.0.0.1:50070/explorer.html#/from_storm
 #solr -> http://127.0.0.1:8983/solr/#/collection1/query
 
 # 2) with java

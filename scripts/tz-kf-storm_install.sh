@@ -4,6 +4,22 @@ cd ..
 export HOME=`pwd`
 cd scripts
 
+## change hosts
+#echo '' >> /etc/hosts
+#echo '# for vm' >> /etc/hosts
+#echo '127.0.0.1	local1.test.com' >> /etc/hosts
+#echo '127.0.0.1	local2.test.com' >> /etc/hosts
+
+ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+echo '' >> /etc/ssh/ssh_config
+echo '    ForwardX11 no' >> /etc/ssh/ssh_config
+echo '    StrictHostKeyChecking no' >> /etc/ssh/ssh_config
+# sudo service ssh restart
+# sudo launchctl unload  /System/Library/LaunchDaemons/ssh.plist 
+# sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+# ssh localhost
+
 PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin
 
 rm -Rf $HOME/*.tgz $HOME/*.zip $HOME/*.gz $HOME/*.tar.gz
@@ -51,6 +67,7 @@ curl -O http://apache.arvixe.com/lucene/solr/5.3.1/solr-5.3.1.zip
 unzip solr-5.3.1.zip
 cd solr-5.3.1
 mkdir -p server/logs
+mkdir -p server/solr/collection1/conf
 cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1/conf
 cp -r $HOME/etc/solr/schema.xml server/solr/collection1/conf/schema.xml
 
