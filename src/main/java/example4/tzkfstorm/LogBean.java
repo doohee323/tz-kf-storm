@@ -21,6 +21,7 @@ public class LogBean {
 		}
 	}
 
+	private String id;
 	private String timestamp;
 	private String hostname;
 	private String client_ip;
@@ -54,5 +55,13 @@ public class LogBean {
 		new Values(lb);
 		LogBean lb2 = LogBean.parse("{\"timestamp\":1441411710347,\"hostname\":\"ruleset33.xdn.com\",\"client_ip\":\"10.115.74.54\"}");
 		new Values(lb2);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

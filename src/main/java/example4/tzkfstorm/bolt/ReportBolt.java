@@ -31,10 +31,11 @@ public class ReportBolt extends BaseRichBolt {
 	}
 
 	public void execute(Tuple tuple) {
-		String hostname = tuple.getString(0);
-		String count = Long.toString(tuple.getLong(1));
-		String input = hostname + "|" + count;
-		collector.emit(Topology.SOLR_STREAM, new Values(hostname, input));
+		String id = tuple.getString(0);
+		String hostname = tuple.getString(1);
+		String count = Long.toString(tuple.getLong(2));
+		String value = "id:" + id + " value:" + "{" + hostname + "|" + count + "}";
+		collector.emit(Topology.SOLR_STREAM, new Values("solr", value));
 		collector.ack(tuple);
 		log.error("Emitted : " + hostname + "->" + count);
 	}

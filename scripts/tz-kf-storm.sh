@@ -36,13 +36,12 @@ chown -Rf vagrant:vagrant $HOME/kafka solr-5.3.1
 chown -Rf vagrant:vagrant $HOME/apache-storm-0.10.0
 chown -Rf vagrant:vagrant $HOME/solr-5.3.1
 
+exit 0
+
 cd /vagrant/scripts
 su vagrant
 ./tz-kf-storm_run.sh
 
-exit 0
+# follow tz-kf-storm_test.sh guide
 
-# after deploy jar,
-cd /vagrant/scripts
-tz-kf-storm_test.sh
 

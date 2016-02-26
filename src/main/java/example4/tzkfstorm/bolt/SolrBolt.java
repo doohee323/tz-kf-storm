@@ -42,7 +42,6 @@ public class SolrBolt extends BaseRichBolt {
 				solrClient.add(document);
 				solrClient.commit();
 			}
-			System.out.println("=============== solr execute");
 			collector.ack(input);
 		} catch (Exception e) {
 			System.out.println(e);
@@ -53,22 +52,18 @@ public class SolrBolt extends BaseRichBolt {
 	 */
 	public SolrInputDocument getSolrInputDocumentForInput(Tuple input) {
 		String content = (String) input.getValueByField("content");
+		System.out.println("Received in SOLR bolt->" + content);
 		String[] parts = content.trim().split(" ");
-		System.out.println("Received in SOLR bolt!! " + content);
-		SolrInputDocument document = null;
+		SolrInputDocument document = new SolrInputDocument();
 		try {
-			document = new SolrInputDocument();
 			for (String part : parts) {
-				if (part.indexOf("|") > -1) {
-					System.out.println("===============part:" + part);
-					String[] subParts = part.split("|");
-					String fieldName = subParts[0];
-					String value = subParts[1];
-					document.addField(fieldName, value);
-				}
+				String[] subParts = part.split(":");
+				String fieldName = subParts[0];
+				String value = subParts[1];
+				document.addField(fieldName, value);
 			}
 		} catch (Exception e) {
-			System.out.println("===============getSolrInputDocumentForInput:" + e);
+			System.out.println(e);
 		}
 		return document;
 	}

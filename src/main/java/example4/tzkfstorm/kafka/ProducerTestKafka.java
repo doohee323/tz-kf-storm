@@ -19,7 +19,8 @@ public class ProducerTestKafka {
 
 	private static final Log log = LogFactory.getLog(ProducerTestKafka.class);
 
-	private static final String KAFKA_HOST_PORT = "localhost:9092";
+//	private static final String KAFKA_HOST_PORT = "192.168.82.150:9092"; // to vagrant
+	private static final String KAFKA_HOST_PORT = "localhost:9092";	// to local
 	private static final String TOPIC = "logs";
 
 	private static String LOG_FILENAME = "data/a.txt";
@@ -48,11 +49,9 @@ public class ProducerTestKafka {
 
 	private void populate() {
 		for (int i = 0; i < this.logData.size(); i++) {
-//			System.out.println("=============" + this.logData.get(i).toString());
-//			kproducer.send(new KeyedMessage<Object, String>(TOPIC, this.logData.get(i).toString()));
-			String test = "id:" + i + " value:solr_message";
-			System.out.println("=============" + test);
-			kproducer.send(new KeyedMessage<Object, String>(TOPIC, test));
+			String input = this.logData.get(i).toString();
+			System.out.println("input" + i + "->" + input);
+			kproducer.send(new KeyedMessage<Object, String>(TOPIC, input));
 		}
 		Utils.sleep(500);
 	}

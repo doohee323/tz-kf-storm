@@ -1,134 +1,27 @@
 This is a Kafka-Storm-Esper example on vagrant.
 =====================================
 
-I. kafka test
-- requirement: 
-	- zookeeper & kafka-server
-	- topics
-	- producer / consumer
-
-wget http://apache.tt.co.kr/kafka/0.8.2.0/kafka_2.10-0.8.2.0.tgz
-tar -xzf kafka_2.10-0.8.2.0.tgz
-mv kafka_2.10-0.8.2.0 kafka
-cd kafka/bin
-
-cd /Users/dhong/Documents/workspace/etc/tz-kf-storm/kafka/bin
-1. run zookeeper & kafka-server(broker)
-./zookeeper-server-start.sh ../config/zookeeper.properties &
-./kafka-server-start.sh ../config/server.properties &
-
-2. create topic
-./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic logs
-./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic logs1
-#./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic sentences
-server.properties
-delete.topic.enable=true
-./kafka-topics.sh --delete --zookeeper localhost:2181 --delete --topic test
-# ./kafka-topics.sh --delete --zookeeper localhost:2181 --delete --topic sentences
-./kafka-topics.sh --list --zookeeper localhost:2181
-
-3. make producer
-./kafka-console-producer.sh --broker-list localhost:9092 --topic logs
-# ./kafka-console-producer.sh --broker-list localhost:9092 --topic sentences
-
-4. make consumer
-./kafka-console-consumer.sh --zookeeper localhost:2181 --topic logs --from-beginning
-# ./kafka-console-consumer.sh --zookeeper localhost:2181 --topic sentences --from-beginning
-
-5. typing "hello" on producer console
-
-II. storm-kafka test
-- requirement: 
-	- zookeeper & storm
-	- topology
-
-1. Make storm-kafka environment.
-
-	1.1 install storm
-	wget http://apache.arvixe.com/storm/apache-storm-0.10.0/apache-storm-0.10.0.zip
-	unzip apache-storm-0.10.0.zip
+case 1) 
+	- install & run: zookeeper, kafka, storm, solr
+	- deploy topology to storm: TestTopology4
+	- test with kafka-console-consumer.sh & kafka-console-producer.sh
+	- test with java producer
 	
-	cd /Users/dhong/Documents/workspace/etc/tz-kf-storm/apache-storm-0.10.0
-	vi config/storm.yaml
-	storm.zookeeper.servers:
-	    - "local1.test.com"
-	    - "local2.test.com"
-	nimbus.host: "127.0.0.1"
+- required
+- run
+	vagrant up # vagrant destroy -f # vagrant reload
+	vagrant ssh
+	cd /vagrant/scripts
+	su vagrant
+	./tz-kf-storm_run.sh
 	
-	1.2. install zookeeper
-	wget http://apache.arvixe.com/zookeeper/stable/zookeeper-3.4.8.tar.gz
-	tar xvzf zookeeper-3.4.8.tar.gz
+	http://192.168.82.150:8080
+	http://192.168.82.150:8983
 	
-	cd /Users/dhong/Documents/workspace/etc/tz-kf-storm/zookeeper-3.4.8
-	vi config/zoo.cfg
+- deploy & test
+	follow ~/scripts/tz-kf-storm_test.sh
 	
-	local1.test.com=zookeeper1:2888:3888
-	local2.test.com=zookeeper2:2888:3888
-
-	vi /etc/hosts
-	127.0.0.1	local1.test.com
-	127.0.0.1	local2.test.com
-	
-	1.3. set path
-	export PATH=$PATH:/Users/dhong/Documents/workspace/etc/tz-kf-storm/apache-storm-0.10.0/bin:/Users/dhong/Documents/workspace/etc/tz-kf-storm/zookeeper-3.4.8/bin:/Users/dhong/Documents/workspace/etc/tz-kf-storm/kafka/bin
-	
-	1.4. run storm 
-	storm nimbus
-	storm supervisor
-	storm ui
-	
-	1.5. run zookeper
-	zkServer.sh start
-
-	http://127.0.0.1:8080/index.html
-
-2. build 
-	
-	mvn clean package
-	
-	4) kafka - storm(multiple bolts) example
-		/tz-kf-storm/src/main/java/example4/tz-kf-storm/TestTopology4.java
-		4.1 run zookeeper & kafka-server(broker)
-		4.2 java  PopulateKafkaTopic
-	
-	5) storm + trident(unique data) + esper example
-		/tz-kf-storm/src/main/java/example5/tz-kf-storm/TestTopology5.java
-
-3. deploy jar to storm
-	#storm jar /Users/dhong/Documents/workspace/etc/tz-kf-storm/target/tz-kf-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.terry.storm.hellostorm.HelloTopology HelloTopology 
-	
-	storm jar /Users/dhong/Documents/workspace/etc/tz-kf-storm/target/tz-kf-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar example4.tzkfstorm.TestTopology4 TestTopology4
-	storm deactivate TestTopology4
-	storm kill TestTopology4
-	storm list
-	
-	storm jar /Users/dhong/Documents/workspace/java/kstorm/target/kstorm-1.0-SNAPSHOT-jar-with-dependencies.jar quux00.wordcount.kafka.WordCountNonAckedTopology
-	storm deactivate word-count-topology
-	storm kill word-count-topology
-	storm list
-
-4. test
-	Now you'll need to put some sentences into the sentence topic.
-	You can either do it manually with:
-	    $KAFKA_BIN/kafka-console-producer.sh --broker-list localhost:9092 --topic sentences
-	    (and now type a bunch of sentences in)
-	or use the example code I provide that puts in a bunch of sentences over a few minutes.
-	    java -cp target/kstorm-1.0-SNAPSHOT-jar-with-dependencies.jar quux00.wordcount.kafka.PopulateKafkaSentenceTopic
-
-	    
-	    
-
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+	http://192.168.82.150:8983/solr/#/collection1/query
+ 	    
 	    
 	    

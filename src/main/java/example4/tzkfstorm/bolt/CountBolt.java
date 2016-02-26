@@ -31,11 +31,12 @@ public class CountBolt extends BaseRichBolt {
 	}
 
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		declarer.declare(new Fields("hostname", "count"));
+		declarer.declare(new Fields("id", "hostname", "count"));
 	}
 
 	public void execute(Tuple tuple) {
 		LogBean logBean = (LogBean) tuple.getValue(0);
+		String id = logBean.getId();
 		Long cnt = countMap.get(logBean.getHostname());
 		if (cnt == null) {
 			cnt = ONE;
@@ -43,7 +44,7 @@ public class CountBolt extends BaseRichBolt {
 			cnt++;
 		}
 		countMap.put(logBean.getHostname(), cnt);
-		collector.emit(tuple, new Values(logBean.getHostname(), cnt));
+		collector.emit(tuple, new Values(id, logBean.getHostname(), cnt));
 		collector.ack(tuple);
 	}
 }
