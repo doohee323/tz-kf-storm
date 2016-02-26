@@ -14,6 +14,10 @@ public class BoltBuilder {
 		this.configs = configs;
 	}
 
+	public SinkTypeBolt buildSinkTypeBolt() {
+		return new SinkTypeBolt();
+	}
+
 	public SplitLogBolt buildSplitLogBolt() {
 		return new SplitLogBolt();
 	}

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 cd ..
-export HOME=`pwd`
+#export HOME=/vagrant/servers # for vagrant
+#export HOME=`pwd` # not for vagrant
 cd scripts
 
 ## change hosts
@@ -22,7 +23,7 @@ echo '    StrictHostKeyChecking no' >> /etc/ssh/ssh_config
 
 PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin
 
-rm -Rf $HOME/*.tgz $HOME/*.zip $HOME/*.gz $HOME/*.tar.gz
+#rm -Rf $HOME/*.tgz $HOME/*.zip $HOME/*.gz $HOME/*.tar.gz
 rm -Rf $HOME/zookeeper-3.4.8
 rm -Rf $HOME/kafka
 rm -Rf $HOME/apache-storm-0.10.0
@@ -46,9 +47,6 @@ cd $HOME
 wget http://apache.tt.co.kr/kafka/0.8.2.0/kafka_2.10-0.8.2.0.tgz
 tar -xzf kafka_2.10-0.8.2.0.tgz
 mv kafka_2.10-0.8.2.0 kafka
-cd kafka
-sed -ie "s/log.dirs/#log.dirs/g" config/server.properties
-echo 'log.dirs='$HOME'/kafka/kafka-logs' >> config/server.properties
 
 echo ### [3. install apache-storm] ############################################################################################################
 cd $HOME
@@ -68,10 +66,10 @@ unzip solr-5.3.1.zip
 cd solr-5.3.1
 mkdir -p server/logs
 mkdir -p server/solr/collection1/conf
-cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1/conf
+cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1
 cp -r $HOME/etc/solr/schema.xml server/solr/collection1/conf/schema.xml
 
-rm -Rf $HOME/*.tgz $HOME/*.zip $HOME/*.gz $HOME/*.tar.gz
+#rm -Rf $HOME/*.tgz $HOME/*.zip $HOME/*.gz $HOME/*.tar.gz
 
 echo #####################################################################################################################################
 echo ### installation finished ###########################################################################################################

@@ -14,6 +14,10 @@ public class Keys {
 	public static final String KAFKA_CONSUMERGROUP = "kafka.consumer.group";
 	public static final String KAFKA_SPOUT_COUNT = "kafkaspout.count";
 
+	//sink bolt
+	public static final String SINK_TYPE_BOLT_ID = "sink-type-bolt";
+	public static final String SINK_BOLT_COUNT = "sinkbolt.count";
+	
 	// split-split
 	public static final String SPLIT_BOLT_ID = "split-bolt";
 	public static final String SPLIT_BOLT_COUNT = "split-bolt.count";

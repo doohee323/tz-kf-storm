@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
+#export HOME=/vagrant/servers # for vagrant
+#export HOME=`pwd` # not for vagrant
 PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin
 
 echo ### [deploy test topology] ############################################################################################################
-#cd /vagrant
-cd $HOME
+cd /vagrant
 mvn clean package
 
 storm jar target/tz-kf-storm-0.0.1-SNAPSHOT-jar-with-dependencies.jar example4.tzkfstorm.Topology

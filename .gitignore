@@ -12,3 +12,4 @@
 bin*
 .DS_Store
 /solr-5.3.1/
+/servers/

@@ -36,13 +36,14 @@ public class SolrBolt extends BaseRichBolt {
 	}
 
 	public void execute(Tuple input) {
-		SolrInputDocument document = getSolrInputDocumentForInput(input);
 		try {
+			SolrInputDocument document = getSolrInputDocumentForInput(input);
 			if (!document.isEmpty()) {
 				solrClient.add(document);
 				solrClient.commit();
-				collector.ack(input);
 			}
+			System.out.println("=============== solr execute");
+			collector.ack(input);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -53,12 +54,13 @@ public class SolrBolt extends BaseRichBolt {
 	public SolrInputDocument getSolrInputDocumentForInput(Tuple input) {
 		String content = (String) input.getValueByField("content");
 		String[] parts = content.trim().split(" ");
-		System.out.println("Received in SOLR bolt " + content);
-		SolrInputDocument document = new SolrInputDocument();
+		System.out.println("Received in SOLR bolt!! " + content);
+		SolrInputDocument document = null;
 		try {
+			document = new SolrInputDocument();
 			for (String part : parts) {
 				if (part.indexOf("|") > -1) {
-					log.error("===============part:" + part);
+					System.out.println("===============part:" + part);
 					String[] subParts = part.split("|");
 					String fieldName = subParts[0];
 					String value = subParts[1];
@@ -66,7 +68,7 @@ public class SolrBolt extends BaseRichBolt {
 				}
 			}
 		} catch (Exception e) {
-
+			System.out.println("===============getSolrInputDocumentForInput:" + e);
 		}
 		return document;
 	}
