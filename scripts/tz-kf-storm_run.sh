@@ -2,7 +2,7 @@
 
 #cd /vagrant
 #export HOME=/vagrant/servers # for vagrant
-#export HOME=`pwd` # not for vagrant
+#export HOME=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin
 
 echo ### [1. run zookeeper] ############################################################################################################

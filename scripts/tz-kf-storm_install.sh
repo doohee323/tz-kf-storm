@@ -2,7 +2,7 @@
 
 cd ..
 #export HOME=/vagrant/servers # for vagrant
-#export HOME=`pwd` # not for vagrant
+#export HOME=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 cd scripts
 
 ## change hosts

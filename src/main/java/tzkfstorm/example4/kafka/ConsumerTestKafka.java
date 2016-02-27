@@ -19,7 +19,7 @@ public class ConsumerTestKafka {
 
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
-		props.put("group.id", "test");
+		props.put("group.id", "sample_group");
 		props.put("zookeeper.connect", ZOOKEEPER_HOST_PORT);
 		props.put("auto.commit.interval.ms", "1000");
 		ConsumerConfig consumerConfig = new ConsumerConfig(props);

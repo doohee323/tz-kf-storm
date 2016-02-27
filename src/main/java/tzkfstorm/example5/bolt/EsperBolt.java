@@ -27,7 +27,6 @@ public class EsperBolt implements Function {
 
     private static final long serialVersionUID = 1L;
     static final Logger log = LoggerFactory.getLogger(EsperBolt.class);
-    private int partitionIndex;
     
     private static final Gson gson = new Gson();
 
@@ -35,7 +34,6 @@ public class EsperBolt implements Function {
 
     public void prepare(Map conf, TridentOperationContext context) {
         log.info("CountSumFunction.prepare(): partition[{}/{}]", context.getPartitionIndex(), context.numPartitions());
-        partitionIndex = context.getPartitionIndex();
         this.setUpEsper();
     }
 

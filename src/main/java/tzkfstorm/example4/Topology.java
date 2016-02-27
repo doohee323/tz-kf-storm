@@ -18,7 +18,7 @@ import storm.kafka.KafkaSpout;
  */
 public class Topology {
 
-	public Properties configs;
+	private Properties configs;
 	public BoltBuilder boltBuilder;
 	public SpoutBuilder spoutBuilder;
 	public static final String SOLR_STREAM = "solr-stream";
