@@ -2,7 +2,8 @@
 
 #cd /vagrant
 #export HOME=/vagrant/servers # for vagrant
-#export HOME=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
+#export HOME=/Users/mac/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
 PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin
 
 echo ### [1. run zookeeper] ############################################################################################################
@@ -11,6 +12,8 @@ zkServer.sh start # zkServer.sh restart
 
 echo ### [2. run apache-kafka] ############################################################################################################
 cd $HOME/kafka
+#sudo mkdir -p /tmp/kafka-logs
+#sudo chown -Rf mac:wheel /tmp/kafka-logs
 #sudo chown -Rf vagrant:vagrant /tmp/kafka-logs
 bin/kafka-server-start.sh ./config/server.properties &		
 # bin/zookeeper-server-stop.sh
@@ -31,7 +34,7 @@ storm ui &
 storm logviewer &
 
 #http://127.0.0.1:8080/index.html
-#ll /Users/dhong/apache-storm-0.10.0/logs
+#ll /Users/mac/apache-storm-0.10.0/logs
 #http://127.0.0.1:8000/log?file=storm-kafka-topology-2-1456339787-worker-6700.log
 
 echo ### [4. run apache solr] ############################################################################################################

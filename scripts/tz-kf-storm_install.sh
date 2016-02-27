@@ -2,7 +2,7 @@
 
 cd ..
 #export HOME=/vagrant/servers # for vagrant
-#export HOME=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
+#export HOME=/Users/mac/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 cd scripts
 
 ## change hosts
@@ -65,7 +65,7 @@ curl -O http://apache.arvixe.com/lucene/solr/5.3.1/solr-5.3.1.zip
 unzip solr-5.3.1.zip
 cd solr-5.3.1
 mkdir -p server/logs
-mkdir -p server/solr/collection1/conf
+mkdir -p server/solr/collection1
 cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1
 cp -r $HOME/etc/solr/schema.xml server/solr/collection1/conf/schema.xml
 
