@@ -22,15 +22,17 @@ vagrant box add precise64 http://files.vagrantup.com/precise64.box
 	cd /vagrant/scripts
 	su vagrant
 	./tz-kf-storm_run.sh
+	
+	* 192.168.82.150: vagrant's ip address.
 ```
-	`http://192.168.82.150:8080`
-	`http://192.168.82.150:8983`
+http://192.168.82.150:8080
+http://192.168.82.150:8983
 	
 ## - deploy & test
 ```
 	follow ~/scripts/tz-kf-storm_test.sh
 ```
-	`http://192.168.82.150:8983/solr/#/collection1/query`
+http://192.168.82.150:8983/solr/#/collection1/query
  	    
 	    
 	    
