@@ -12,7 +12,7 @@
 	- test with java producer
 ```
 
-# Requirements
+## - Requirements
 vagrant box add precise64 http://files.vagrantup.com/precise64.box
 	
 ## - run
