@@ -3,16 +3,18 @@ package tzkfstorm.example4;
 import java.util.Properties;
 
 import backtype.storm.Config;
+import backtype.storm.LocalCluster;
 import backtype.storm.StormSubmitter;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
+import backtype.storm.utils.Utils;
+import storm.kafka.KafkaSpout;
 import tzkfstorm.example4.bolt.BoltBuilder;
 import tzkfstorm.example4.bolt.CountBolt;
 import tzkfstorm.example4.bolt.ReportBolt;
 import tzkfstorm.example4.bolt.SolrBolt;
 import tzkfstorm.example4.bolt.SplitLogBolt;
 import tzkfstorm.example4.spout.SpoutBuilder;
-import storm.kafka.KafkaSpout;
 
 /**
  */
@@ -68,20 +70,19 @@ public class Topology {
 		conf.setNumWorkers(1);
 
 		try {
-			// String runType = System.getProperty("runType", "local");
-			// if (runType != null && runType.equals("local")) {
-			// LocalCluster cluster = new LocalCluster();
-			// cluster.submitTopology(topologyName, conf,
-			// builder.createTopology());
-			// Utils.sleep(10 * 100000);
-			// cluster.killTopology(topologyName);
-			// cluster.shutdown();
-			// } else {
-			StormSubmitter.submitTopology(topologyName, conf, builder.createTopology());
-			// }
+			String runType = System.getProperty("runType", "local");
+			if (runType != null && runType.equals("local")) {
+				LocalCluster cluster = new LocalCluster();
+				cluster.submitTopology(topologyName, conf, builder.createTopology());
+				Utils.sleep(10 * 100000);
+				cluster.killTopology(topologyName);
+				cluster.shutdown();
+			} else {
+				StormSubmitter.submitTopology(topologyName, conf, builder.createTopology());
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(0);
+			StormSubmitter.submitTopology(topologyName, conf, builder.createTopology());
 		}
 	}
 

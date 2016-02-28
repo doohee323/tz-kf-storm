@@ -15,6 +15,7 @@ storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example4.Topology
 #storm deactivate TestTopology4
 #storm kill TestTopology4
 #storm list
+storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example7.Topology
 
 # http://127.0.0.1:8080/index.html
 

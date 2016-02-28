@@ -17,9 +17,10 @@ public class BoltBuilder {
 	public EsperBolt buildEsperBolt() {
 		String SOLR_STREAM = "solr-stream";
 		String topic = configs.getProperty(Keys.KAFKA_TOPIC);
-		EsperBolt esperBolt = new EsperBolt.Builder().inputs().aliasComponent(Keys.ESPER_BOLT_ID, SOLR_STREAM)
-				.toEventType(topic).outputs().outputs().onStream(SOLR_STREAM).emit("id", "timestamp", "client_ip")
-				.statements().add("select * from " + topic + " where hostname = \"ruleset32.xdn.com\"").build();
+		String kafa_spout = configs.getProperty(Keys.KAFKA_SPOUT_ID) + "_default";
+		EsperBolt esperBolt = new EsperBolt.Builder().inputs().aliasComponent(Keys.ESPER_BOLT_ID)
+				.toEventType(kafa_spout).outputs().outputs().onStream(SOLR_STREAM).emit("id", "timestamp", "client_ip")
+				.statements().add("select * from " + kafa_spout + " where hostname = \"ruleset32.xdn.com\"").build();
 		return esperBolt;
 	}
 
