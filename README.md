@@ -1,11 +1,8 @@
-# This is a Kafka-Storm-Esper example on vagrant.
+# Kafka-Storm-Esper example on vagrant.
 ==========================================================================
 
 * case 1:  kafka, storm (tzkfstorm.example4)
 * case 2:  kafka, storm, esper (tzkfstorm.example9)
-
-# Requirements
-vagrant box add precise64 http://files.vagrantup.com/precise64.box
 
 # workflow
 ```
@@ -14,8 +11,11 @@ vagrant box add precise64 http://files.vagrantup.com/precise64.box
 	- test with kafka-console-consumer.sh & kafka-console-producer.sh
 	- test with java producer
 ```
+
+# Requirements
+vagrant box add precise64 http://files.vagrantup.com/precise64.box
 	
-## run
+## - run
 ```
 	vagrant up # vagrant destroy -f # vagrant reload
 	vagrant ssh
@@ -27,7 +27,7 @@ vagrant box add precise64 http://files.vagrantup.com/precise64.box
 	`http://192.168.82.150:8983`
 ```
 	
-## deploy & test
+## - deploy & test
 ```
 	follow ~/scripts/tz-kf-storm_test.sh
 	`http://192.168.82.150:8983/solr/#/collection1/query`
