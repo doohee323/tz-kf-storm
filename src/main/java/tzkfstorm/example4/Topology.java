@@ -45,28 +45,28 @@ public class Topology {
 		ReportBolt reportBolt = boltBuilder.buildReportBolt();
 		SolrBolt solrBolt = boltBuilder.buildSolrBolt();
 
-		int kafkaSpoutCount = Integer.parseInt(configs.getProperty(Keys.KAFKA_SPOUT_COUNT));
-		builder.setSpout(configs.getProperty(Keys.KAFKA_SPOUT_ID), kafkaSpout, kafkaSpoutCount);
+		int kafkaSpoutCount = Integer.parseInt(configs.getProperty("kafkaspout.count"));
+		builder.setSpout(configs.getProperty("kafka-spout"), kafkaSpout, kafkaSpoutCount);
 
-		int splitBoltCount = Integer.parseInt(configs.getProperty(Keys.SPLIT_BOLT_COUNT));
-		builder.setBolt(configs.getProperty(Keys.SPLIT_BOLT_ID), splitlogBolt, splitBoltCount)
-				.shuffleGrouping(configs.getProperty(Keys.KAFKA_SPOUT_ID));
+		int splitBoltCount = Integer.parseInt(configs.getProperty("split-bolt.count"));
+		builder.setBolt(configs.getProperty("split-bolt"), splitlogBolt, splitBoltCount)
+				.shuffleGrouping(configs.getProperty("kafka-spout"));
 
-		int countBoltCount = Integer.parseInt(configs.getProperty(Keys.COUNT_BOLT_COUNT));
-		builder.setBolt(configs.getProperty(Keys.COUNT_BOLT_ID), countBolt, countBoltCount)
-				.fieldsGrouping(configs.getProperty(Keys.SPLIT_BOLT_ID), new Fields("hostname"));
+		int countBoltCount = Integer.parseInt(configs.getProperty("count-bolt.count"));
+		builder.setBolt(configs.getProperty("count-bolt"), countBolt, countBoltCount)
+				.fieldsGrouping(configs.getProperty("split-bolt"), new Fields("hostname"));
 
-		int reportBoltCount = Integer.parseInt(configs.getProperty(Keys.REPORT_BOLT_COUNT));
-		builder.setBolt(configs.getProperty(Keys.REPORT_BOLT_ID), reportBolt, reportBoltCount)
-				.globalGrouping(configs.getProperty(Keys.COUNT_BOLT_ID));
+		int reportBoltCount = Integer.parseInt(configs.getProperty("report-bolt.count"));
+		builder.setBolt(configs.getProperty("report-bolt"), reportBolt, reportBoltCount)
+				.globalGrouping(configs.getProperty("count-bolt"));
 
-		int solrBoltCount = Integer.parseInt(configs.getProperty(Keys.SOLR_BOLT_COUNT));
-		builder.setBolt(configs.getProperty(Keys.SOLR_BOLT_ID), solrBolt, solrBoltCount)
-				.shuffleGrouping(configs.getProperty(Keys.REPORT_BOLT_ID), SOLR_STREAM);
+		int solrBoltCount = Integer.parseInt(configs.getProperty("solrbolt.count"));
+		builder.setBolt(configs.getProperty("solr-bolt"), solrBolt, solrBoltCount)
+				.shuffleGrouping(configs.getProperty("report-bolt"), SOLR_STREAM);
 
 		Config conf = new Config();
-		conf.put("solr.zookeeper.hosts", configs.getProperty(Keys.SOLR_ZOOKEEPER_HOSTS));
-		String topologyName = configs.getProperty(Keys.TOPOLOGY_NAME);
+		conf.put("solr.zookeeper.hosts", configs.getProperty("solr.zookeeper.hosts"));
+		String topologyName = configs.getProperty("topology");
 		conf.setNumWorkers(1);
 
 		try {

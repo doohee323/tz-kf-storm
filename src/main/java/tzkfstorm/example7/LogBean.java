@@ -53,7 +53,8 @@ public class LogBean {
 	public static void main(String[] args) throws Exception {
 		LogBean lb = LogBean.parse("{timestamp:1441411710347,hostname:ruleset33.xdn.com,client_ip:10.115.74.54}");
 		new Values(lb);
-		LogBean lb2 = LogBean.parse("{\"timestamp\":1441411710347,\"hostname\":\"ruleset33.xdn.com\",\"client_ip\":\"10.115.74.54\"}");
+		LogBean lb2 = LogBean.parse(
+				"{\"timestamp\":1441411710347,\"hostname\":\"ruleset33.xdn.com\",\"client_ip\":\"10.115.74.54\"}");
 		new Values(lb2);
 	}
 
