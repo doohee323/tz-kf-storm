@@ -1,7 +1,13 @@
-This is a Kafka-Storm-Esper example on vagrant.
-=====================================
+# This is a Kafka-Storm-Esper example on vagrant.
+==========================================================================
 
-1. case 1
+* case 1:  kafka, storm (tzkfstorm.example4)
+* case 2:  kafka, storm, esper (tzkfstorm.example9)
+
+# Requirements
+vagrant box add precise64 http://files.vagrantup.com/precise64.box
+
+# workflow
 ```
 	- install & run: zookeeper, kafka, storm, solr
 	- deploy topology to storm: TestTopology4
@@ -9,12 +15,7 @@ This is a Kafka-Storm-Esper example on vagrant.
 	- test with java producer
 ```
 	
-- required
-```
-	vagrant box add precise64 http://files.vagrantup.com/precise64.box
-```
-	
-- run
+## run
 ```
 	vagrant up # vagrant destroy -f # vagrant reload
 	vagrant ssh
@@ -22,15 +23,15 @@ This is a Kafka-Storm-Esper example on vagrant.
 	su vagrant
 	./tz-kf-storm_run.sh
 	
-	http://192.168.82.150:8080
-	http://192.168.82.150:8983
+	`http://192.168.82.150:8080`
+	`http://192.168.82.150:8983`
 ```
 	
-- deploy & test
+## deploy & test
 ```
 	follow ~/scripts/tz-kf-storm_test.sh
+	`http://192.168.82.150:8983/solr/#/collection1/query`
 	
-	http://192.168.82.150:8983/solr/#/collection1/query
 ```
  	    
 	    

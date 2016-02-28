@@ -3,11 +3,9 @@ package tzkfstorm.example4;
 import java.util.Properties;
 
 import backtype.storm.Config;
-import backtype.storm.LocalCluster;
 import backtype.storm.StormSubmitter;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
-import backtype.storm.utils.Utils;
 import storm.kafka.KafkaSpout;
 import tzkfstorm.example4.bolt.BoltBuilder;
 import tzkfstorm.example4.bolt.CountBolt;
