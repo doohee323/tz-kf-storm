@@ -70,19 +70,18 @@ public class Topology {
 		conf.setNumWorkers(1);
 
 		try {
-			String runType = System.getProperty("runType", "local");
-			if (runType != null && runType.equals("local")) {
-				LocalCluster cluster = new LocalCluster();
-				cluster.submitTopology(topologyName, conf, builder.createTopology());
-				Utils.sleep(10 * 100000);
-				cluster.killTopology(topologyName);
-				cluster.shutdown();
-			} else {
+//			String runType = System.getProperty("runType", "local");
+//			if (runType != null && runType.equals("local")) {
+//				LocalCluster cluster = new LocalCluster();
+//				cluster.submitTopology(topologyName, conf, builder.createTopology());
+//				Utils.sleep(10 * 100000);
+//				cluster.killTopology(topologyName);
+//				cluster.shutdown();
+//			} else {
 				StormSubmitter.submitTopology(topologyName, conf, builder.createTopology());
-			}
+//			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			StormSubmitter.submitTopology(topologyName, conf, builder.createTopology());
 		}
 	}
 
