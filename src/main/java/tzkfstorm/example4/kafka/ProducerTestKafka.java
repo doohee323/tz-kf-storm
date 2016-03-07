@@ -23,7 +23,7 @@ public class ProducerTestKafka {
 	private static final String KAFKA_HOST_PORT = "localhost:9092";	// to local
 	private static final String TOPIC = "logs";
 
-	private static String LOG_FILENAME = "data/a.txt";
+	private static String LOG_FILENAME = "resources/data/a.txt";
 	private List<Object> logData = new ArrayList<Object>();
 
 	private Producer<Object, String> kproducer;

@@ -19,22 +19,23 @@ apt-get purge openjdk* -y
 apt-get install oracle-java8-set-default
 apt-get install wget curl unzip -y
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
 apt-get install maven -y
 
-echo '' >> $HOME/.bashrc
-echo 'export HOME=/vagrant/servers' >> $HOME/.bashrc
-echo 'export PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin' >> $HOME/.bashrc
-echo 'export JAVA_HOME='$JAVA_HOME >> $HOME/.bashrc
-echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $HOME/.bashrc
+echo '' >> $SERVERS/.bashrc
+echo 'export SERVERS=/vagrant/servers' >> $SERVERS/.bashrc
+echo 'export PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin' >> $SERVERS/.bashrc
+echo 'export JAVA_HOME='$JAVA_HOME >> $SERVERS/.bashrc
+echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $SERVERS/.bashrc
 
-export HOME=/vagrant/servers
+export SERVERS=/vagrant/servers
 cd /vagrant/scripts
 ./tz-kf-storm_install.sh
 
-chown -Rf vagrant:vagrant $HOME/zookeeper-3.4.8
-chown -Rf vagrant:vagrant $HOME/kafka solr-5.3.1
-chown -Rf vagrant:vagrant $HOME/apache-storm-0.10.0
-chown -Rf vagrant:vagrant $HOME/solr-5.3.1
+chown -Rf vagrant:vagrant $SERVERS/zookeeper-3.4.8
+chown -Rf vagrant:vagrant $SERVERS/kafka solr-5.3.1
+chown -Rf vagrant:vagrant $SERVERS/apache-storm-0.10.0
+chown -Rf vagrant:vagrant $SERVERS/solr-5.3.1
 
 exit 0
 

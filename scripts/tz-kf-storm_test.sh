@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#export HOME=/vagrant/servers # for vagrant
-#export HOME=/Users/mac/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
-PATH=$PATH:.:$HOME/apache-storm-0.10.0/bin
+export SERVERS=/vagrant/servers # for vagrant
+#export SERVERS=/Users/mac/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
+PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin
 
 echo ### [deploy test topology] ############################################################################################################
 cd /vagrant
@@ -21,7 +21,7 @@ storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example7.Topology
 
 echo ### [test topology] ############################################################################################################
 # 1) with  kafka-console-producer.sh
-cd $HOME/kafka
+cd $SERVERS/kafka
 bin/kafka-console-consumer.sh --zookeeper 127.0.0.1:2181 --topic logs --from-beginning
 
 bin/kafka-console-producer.sh --topic logs --broker 127.0.0.1:9092
@@ -40,8 +40,8 @@ mvn clean package
 java -cp target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example4.kafka.ProducerTestKafka
 
 # remove data / logs
-rm -Rf $HOME/apache-storm-0.10.0/logs/*
-rm -Rf $HOME/solr-5.3.1/server/solr/collection1/data/*
-rm -Rf $HOME/zookeeper-3.4.8/zookeeper
+rm -Rf $SERVERS/apache-storm-0.10.0/logs/*
+rm -Rf $SERVERS/solr-5.3.1/server/solr/collection1/data/*
+rm -Rf $SERVERS/zookeeper-3.4.8/zookeeper
 rm -Rf /tmp/kafka-logs/*
 
