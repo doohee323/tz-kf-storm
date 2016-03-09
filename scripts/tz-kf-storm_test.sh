@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 export SERVERS=/vagrant/servers # for vagrant
+export PROJ_DIR=/home/vagrant
+export SRC_DIR=/vagrant/resources
 #export SERVERS=/Users/mac/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin
 
@@ -38,6 +40,10 @@ cd /vagrant
 mvn clean package
 
 java -cp target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example4.kafka.ProducerTestKafka
+
+### [make test data] ############################################################################################################
+mkdir -p $PROJ_DIR/data
+cp $SRC_DIR/data/stats-2016-01-22.log $PROJ_DIR/data
 
 # remove data / logs
 rm -Rf $SERVERS/apache-storm-0.10.0/logs/*

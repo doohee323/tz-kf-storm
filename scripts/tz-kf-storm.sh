@@ -22,13 +22,15 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 apt-get install maven -y
 
-echo '' >> $SERVERS/.bashrc
-echo 'export SERVERS=/vagrant/servers' >> $SERVERS/.bashrc
-echo 'export PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin' >> $SERVERS/.bashrc
-echo 'export JAVA_HOME='$JAVA_HOME >> $SERVERS/.bashrc
-echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $SERVERS/.bashrc
-
+export PROJ_DIR=/home/vagrant
 export SERVERS=/vagrant/servers
+
+echo '' >> $PROJ_DIR/.bashrc
+echo 'export SERVERS=/vagrant/servers' >> $PROJ_DIR/.bashrc
+echo 'export PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin' >> $PROJ_DIR/.bashrc
+echo 'export JAVA_HOME='$JAVA_HOME >> $PROJ_DIR/.bashrc
+echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $PROJ_DIR/.bashrc
+
 cd /vagrant/scripts
 ./tz-kf-storm_install.sh
 

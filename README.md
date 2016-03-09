@@ -10,6 +10,7 @@
 	- deploy topology to storm: TestTopology4
 	- test with kafka-console-consumer.sh & kafka-console-producer.sh
 	- test with java producer
+	- test with logstash kafaka output
 ```
 
 ## - Requirements
