@@ -2,7 +2,7 @@
 
 cd ..
 export SERVERS=/vagrant/servers # for vagrant
-#export SERVERS=/Users/mac/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
+#export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 cd scripts
 
 ## change hosts
@@ -28,6 +28,7 @@ rm -Rf $SERVERS/zookeeper-3.4.8
 rm -Rf $SERVERS/kafka
 rm -Rf $SERVERS/apache-storm-0.10.0
 rm -Rf $SERVERS/solr-5.3.1
+rm -Rf $SERVERS/logstash-2.2.2
 
 echo ### [1. install zookeeper] ############################################################################################################
 cd $SERVERS
@@ -65,8 +66,8 @@ curl -O http://apache.arvixe.com/lucene/solr/5.3.1/solr-5.3.1.zip
 unzip solr-5.3.1.zip
 cd solr-5.3.1
 mkdir -p server/logs
-mkdir -p server/solr/collection1
-cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1
+mkdir -p server/solr/collection1/conf
+cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1/conf
 cp -r $SERVERS/configs/solr/schema.xml server/solr/collection1/conf/schema.xml
 
 #rm -Rf $SERVERS/*.tgz $SERVERS/*.zip $SERVERS/*.gz $SERVERS/*.tar.gz

@@ -2,7 +2,7 @@
 
 #cd /vagrant
 export SERVERS=/vagrant/servers # for vagrant
-#export SERVERS=/Users/mac/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
+#export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
 PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin
 
@@ -12,9 +12,9 @@ zkServer.sh start # zkServer.sh restart
 
 echo ### [2. run apache-kafka] ############################################################################################################
 cd $SERVERS/kafka
-#sudo mkdir -p /tmp/kafka-logs
+sudo mkdir -p /tmp/kafka-logs
 #sudo chown -Rf mac:wheel /tmp/kafka-logs
-#sudo chown -Rf vagrant:vagrant /tmp/kafka-logs
+sudo chown -Rf vagrant:vagrant /tmp/kafka-logs
 bin/kafka-server-start.sh ./config/server.properties &		
 # bin/zookeeper-server-stop.sh
 sleep 10
