@@ -16,7 +16,7 @@ cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
 echo '' >> /etc/ssh/ssh_config
 echo '    ForwardX11 no' >> /etc/ssh/ssh_config
 echo '    StrictHostKeyChecking no' >> /etc/ssh/ssh_config
-# sudo service ssh restart
+sudo service ssh restart
 # sudo launchctl unload  /System/Library/LaunchDaemons/ssh.plist 
 # sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 # ssh localhost
