@@ -24,11 +24,11 @@
 		</encoder>
 	</appender>
 
-	<logger name="tzkfstorm.example4.spout" level="ERROR" additivity="false">
+	<logger name="tzkfstorm.case4.spout" level="ERROR" additivity="false">
 		<appender-ref ref="tz-kf-storm4" />
 	</logger>
 
-	<logger name="example5.tzkfstorm.bolt.TestBolt5" level="INFO"
+	<logger name="case5.tzkfstorm.bolt.TestBolt5" level="INFO"
 		additivity="false">
 		<appender-ref ref="tz-kf-storm5" />
 	</logger>

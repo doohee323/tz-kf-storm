@@ -75,5 +75,5 @@ mvn clean package
 storm kill TestTopology4
 sleep 30
 
-storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.example4.Topology
+storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.case4.Topology
 storm list

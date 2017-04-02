@@ -1,8 +1,8 @@
-# Kafka-Storm-Esper example on vagrant.
+# Kafka-Storm-Esper case on vagrant.
 ==========================================================================
 
-* case 1:  kafka, storm (tzkfstorm.example4)
-* case 2:  kafka, storm, esper (tzkfstorm.example9)
+* case 1:  kafka, storm (tzkfstorm.case4)
+* case 2:  kafka, storm, esper (tzkfstorm.case9)
 
 # workflow
 ```
