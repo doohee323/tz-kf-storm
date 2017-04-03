@@ -4,7 +4,7 @@ export PROJ_DIR=/home/vagrant
 export SRC_DIR=/vagrant/resources
 export SERVERS=/vagrant/servers # for vagrant
 #export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
-PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin
+PATH=$PATH:.:$SERVERS/apache-storm-0.10.2/bin
 
 echo ### [deploy test topology] ############################################################################################################
 cd /vagrant
@@ -46,7 +46,7 @@ mkdir -p $PROJ_DIR/data
 cp $SRC_DIR/data/stats-2016-01-22.log $PROJ_DIR/data
 
 # remove data / logs
-rm -Rf $SERVERS/apache-storm-0.10.0/logs/*
+rm -Rf $SERVERS/apache-storm-0.10.2/logs/*
 rm -Rf $SERVERS/solr-5.3.1/server/solr/collection1/data/*
 rm -Rf $SERVERS/zookeeper-3.4.8/zookeeper
 rm -Rf /tmp/kafka-logs/*

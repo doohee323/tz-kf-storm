@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
 
   $config['ip'].each do | host_name, host_ip |
     config.vm.define "#{host_name}" do |node|
-      node.vm.box = "precise64"
+      node.vm.box = "hashicorp/precise64"
       node.vm.hostname = "#{host_name}"
       #node.vm.box_url = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box"
       node.vm.network :private_network, ip: host_ip

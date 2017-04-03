@@ -21,8 +21,7 @@ vagrant box add precise64 http://files.vagrantup.com/precise64.box
 	vagrant up # vagrant destroy -f # vagrant reload
 	vagrant ssh
 	cd /vagrant/scripts
-	su vagrant
-	./tz-kf-storm_run.sh
+	bash tz-kf-storm_run.sh
 	
 	* 192.168.82.150: vagrant's ip address.
 ```

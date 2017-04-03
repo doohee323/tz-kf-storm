@@ -1,10 +1,11 @@
-/apache-storm-0.10.0/
+/apache-storm-0.10.2/
 /kafka/
 /solr-5.3.1/
 /zookeeper-3.4.8/
-/apache-storm-0.10.0.zip
+/apache-storm-0.10.2.zip
 /kafka_2.10-0.8.2.0.tgz
 /solr-5.3.1.zip
 /zookeeper-3.4.8.tar.gz
 /logstash-2.2.2.tar.gz
 /logstash-2.2.2/
+/apache-storm-0.10.2.tar.gz

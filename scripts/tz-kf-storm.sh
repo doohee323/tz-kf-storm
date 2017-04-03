@@ -27,7 +27,7 @@ export SERVERS=/vagrant/servers
 
 echo '' >> $PROJ_DIR/.bashrc
 echo 'export SERVERS=/vagrant/servers' >> $PROJ_DIR/.bashrc
-echo 'export PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin' >> $PROJ_DIR/.bashrc
+echo 'export PATH=$PATH:.:$SERVERS/apache-storm-0.10.2/bin' >> $PROJ_DIR/.bashrc
 echo 'export JAVA_HOME='$JAVA_HOME >> $PROJ_DIR/.bashrc
 echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $PROJ_DIR/.bashrc
 
@@ -36,7 +36,7 @@ cd /vagrant/scripts
 
 chown -Rf vagrant:vagrant $SERVERS/zookeeper-3.4.8
 chown -Rf vagrant:vagrant $SERVERS/kafka solr-5.3.1
-chown -Rf vagrant:vagrant $SERVERS/apache-storm-0.10.0
+chown -Rf vagrant:vagrant $SERVERS/apache-storm-0.10.2
 chown -Rf vagrant:vagrant $SERVERS/solr-5.3.1
 
 exit 0

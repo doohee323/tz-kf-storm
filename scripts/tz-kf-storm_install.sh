@@ -21,18 +21,18 @@ sudo service ssh restart
 # sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 # ssh localhost
 
-PATH=$PATH:.:$SERVERS/apache-storm-0.10.0/bin
+PATH=$PATH:.:$SERVERS/apache-storm-0.10.2/bin
 
 #rm -Rf $SERVERS/*.tgz $SERVERS/*.zip $SERVERS/*.gz $SERVERS/*.tar.gz
 rm -Rf $SERVERS/zookeeper-3.4.8
 rm -Rf $SERVERS/kafka
-rm -Rf $SERVERS/apache-storm-0.10.0
+rm -Rf $SERVERS/apache-storm-0.10.2
 rm -Rf $SERVERS/solr-5.3.1
 rm -Rf $SERVERS/logstash-2.2.2
 
 echo ### [1. install zookeeper] ############################################################################################################
 cd $SERVERS
-wget http://apache.arvixe.com/zookeeper/stable/zookeeper-3.4.8.tar.gz
+wget http://apache.claz.org/zookeeper/zookeeper-3.4.8/zookeeper-3.4.8.tar.gz
 tar xvzf zookeeper-3.4.8.tar.gz
 cd zookeeper-3.4.8
 cp -r conf/zoo_sample.cfg conf/zoo.cfg
@@ -51,9 +51,9 @@ mv kafka_2.10-0.8.2.0 kafka
 
 echo ### [3. install apache-storm] ############################################################################################################
 cd $SERVERS
-wget http://apache.arvixe.com/storm/apache-storm-0.10.0/apache-storm-0.10.0.zip
-unzip apache-storm-0.10.0.zip
-cd apache-storm-0.10.0
+wget http://apache.claz.org/storm/apache-storm-0.10.2/apache-storm-0.10.2.tar.gz
+tar -xzf apache-storm-0.10.2.tar.gz
+cd apache-storm-0.10.2
 echo '' >> conf/storm.yaml
 echo 'storm.zookeeper.servers:' >> conf/storm.yaml
 echo '    - "local1.test.com"' >> conf/storm.yaml
@@ -62,7 +62,7 @@ echo 'nimbus.host: "127.0.0.1"' >> conf/storm.yaml
 
 echo ### [4. install apache solr] ############################################################################################################
 cd $SERVERS
-curl -O http://apache.arvixe.com/lucene/solr/5.3.1/solr-5.3.1.zip
+wget http://archive.apache.org/dist/lucene/solr/5.3.1/solr-5.3.1.zip
 unzip solr-5.3.1.zip
 cd solr-5.3.1
 mkdir -p server/logs
