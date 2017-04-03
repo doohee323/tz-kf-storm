@@ -23,10 +23,10 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 apt-get install maven -y
 
 export PROJ_DIR=/home/vagrant
-export SERVERS=/vagrant/servers
+export SERVERS=/home/vagrant/servers
 
 echo '' >> $PROJ_DIR/.bashrc
-echo 'export SERVERS=/vagrant/servers' >> $PROJ_DIR/.bashrc
+echo 'export SERVERS=/home/vagrant/servers' >> $PROJ_DIR/.bashrc
 echo 'export PATH=$PATH:.:$SERVERS/apache-storm-0.10.2/bin' >> $PROJ_DIR/.bashrc
 echo 'export JAVA_HOME='$JAVA_HOME >> $PROJ_DIR/.bashrc
 echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $PROJ_DIR/.bashrc

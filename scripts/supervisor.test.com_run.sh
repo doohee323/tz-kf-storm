@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #cd /vagrant
-export SERVERS=/vagrant/servers # for vagrant
+export SERVERS=/home/vagrant/servers # for vagrant
 #export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
 PATH=$PATH:.:$SERVERS/apache-storm-0.10.2/bin
@@ -16,7 +16,13 @@ sudo mkdir -p /tmp/kafka-logs
 #sudo chown -Rf mac:wheel /tmp/kafka-logs
 sudo chown -Rf vagrant:vagrant /tmp/kafka-logs
 
-echo 2 > /tmp/zookeeper/myid
+sudo mkdir -p /tmp/zookeeper
+sudo chown -Rf vagrant:vagrant /tmp/zookeeper
+sudo echo 2 > /tmp/zookeeper/myid
+
+sed -ie "s/broker.id=0/broker.id=2/g" ./config/server.properties
+sed -ie "s/zookeeper.connect/#zookeeper.connect/g" ./config/server.properties
+echo 'zookeeper.connect=nimbus.test.com:2181,supervisor.test.com:2181' >> ./config/server.properties
 
 bin/kafka-server-start.sh ./config/server.properties &		
 # bin/zookeeper-server-stop.sh

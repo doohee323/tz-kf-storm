@@ -2,7 +2,7 @@
 
 export PROJ_DIR=/home/vagrant
 export SRC_DIR=/vagrant/resources
-export SERVERS=/vagrant/servers # for vagrant
+export SERVERS=/home/vagrant/servers # for vagrant
 #export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 PATH=$PATH:.:$SERVERS/apache-storm-0.10.2/bin
 

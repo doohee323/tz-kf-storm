@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 cd ..
-export SERVERS=/vagrant/servers # for vagrant
+export SERVERS=/home/vagrant/servers # for vagrant
 #export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 cd scripts
 
 export PROJ_DIR=/home/vagrant
 export SRC_DIR=/vagrant/resources
-export SERVERS=/vagrant/servers # for vagrant
+export SERVERS=/home/vagrant/servers # for vagrant
 
 echo '' >> $PROJ_DIR/.bashrc
 echo 'export PATH=$PATH:.' >> $PROJ_DIR/.bashrc
@@ -85,4 +85,3 @@ echo ### installation finished #################################################
 echo ### After execute 'vagrant ssh', run each of apps as follows. #######################################################################
 echo #####################################################################################################################################
 
-exit 0
