@@ -36,7 +36,7 @@ http://192.168.82.170:8983	# solr
 ```
 	vagrant ssh nimbus.test.com
 	cd /vagrant/scripts
-	bash tz-kf-storm_test.sh
+	bash nimbus.test.com_test.sh
 ```
 http://192.168.82.170:8983/solr/#/collection1/query
  	    

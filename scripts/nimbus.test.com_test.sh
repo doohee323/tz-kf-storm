@@ -22,6 +22,14 @@ storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.case4.Topology
 # http://127.0.0.1:8080/index.html
 
 echo ### [test topology] ############################################################################################################
+# 3) with logstash producer
+sudo mkdir -p $PROJ_DIR/test_data
+cp $SRC_DIR/data/stats-2016-01-22.log $PROJ_DIR/test_data
+
+exit 0
+
+
+
 # 1) with  kafka-console-producer.sh
 cd $SERVERS/kafka
 bin/kafka-console-consumer.sh --zookeeper nimbus.test.com:2181 --topic logs --from-beginning
