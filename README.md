@@ -1,7 +1,7 @@
 # Kafka-Storm-Esper case on vagrant.
 ==========================================================================
 
-* case 1:  kafka, storm (tzkfstorm.case4)
+* case 1:  kafka, storm (tzkfstorm.case4.Topology)
 * case 2:  kafka, storm, esper (tzkfstorm.case9)
 
 # workflow
@@ -13,24 +13,22 @@
 	- test with logstash kafaka output
 ```
 
-## - Requirements
-vagrant box add precise64 http://files.vagrantup.com/precise64.box
-	
 ## - run
 ```
 	vagrant up # vagrant destroy -f # vagrant reload
 	vagrant ssh
 	cd /vagrant/scripts
-	bash tz-kf-storm_run.sh
+	bash tz-kf-storm_run.sh		# run servers (solr, kafka, logstash, storm)
 	
 	* 192.168.82.170: vagrant's ip address.
 ```
-http://192.168.82.170:8080
-http://192.168.82.170:8983
+http://192.168.82.170:8080	# storm ui
+http://192.168.82.170:8983	# solr
 	
 ## - deploy & test
 ```
-	follow ~/scripts/tz-kf-storm_test.sh
+	cd /vagrant/scripts
+	bash tz-kf-storm_test.sh
 ```
 http://192.168.82.170:8983/solr/#/collection1/query
  	    

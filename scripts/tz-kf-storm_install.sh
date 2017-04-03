@@ -5,6 +5,17 @@ export SERVERS=/vagrant/servers # for vagrant
 #export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 cd scripts
 
+export PROJ_DIR=/home/vagrant
+export SRC_DIR=/vagrant/resources
+export SERVERS=/vagrant/servers # for vagrant
+
+echo '' >> $PROJ_DIR/.bashrc
+echo 'export PATH=$PATH:.' >> $PROJ_DIR/.bashrc
+echo 'export PROJ_DIR='$PROJ_DIR >> $PROJ_DIR/.bashrc
+echo 'export SRC_DIR='$SRC_DIR >> $PROJ_DIR/.bashrc
+echo 'export SERVERS='$SERVERS >> $PROJ_DIR/.bashrc
+source $PROJ_DIR/.bashrc
+
 ## change hosts
 #echo '' >> /etc/hosts
 #echo '# for vm' >> /etc/hosts

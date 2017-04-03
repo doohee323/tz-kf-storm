@@ -42,12 +42,15 @@ mvn clean package
 java -cp target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.case4.kafka.ProducerTestKafka
 
 # 3) with logstash producer
-mkdir -p $PROJ_DIR/data
-cp $SRC_DIR/data/stats-2016-01-22.log $PROJ_DIR/data
+sudo mkdir -p $PROJ_DIR/test_data
+cp $SRC_DIR/data/stats-2016-01-22.log $PROJ_DIR/test_data
 
 # remove data / logs
 rm -Rf $SERVERS/apache-storm-0.10.2/logs/*
-rm -Rf $SERVERS/solr-5.3.1/server/solr/collection1/data/*
+rm -Rf $SERVERS/solr-5.3.1/server/solr/collection1/test_data/*
 rm -Rf $SERVERS/zookeeper-3.4.8/zookeeper
 rm -Rf /tmp/kafka-logs/*
+
+
+
 
