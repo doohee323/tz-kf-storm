@@ -47,7 +47,7 @@ storm supervisor &
 #http://127.0.0.1:8000/log?file=storm-kafka-topology-2-1456339787-worker-6700.log
 
 echo ### [4. run logstash] ############################################################################################################
-cp $SERVERS/configs/logstash/log_list/derp.conf $SERVERS/logstash-2.2.2/log_list
+cp /vagrant/configs/logstash/log_list/derp.conf $SERVERS/logstash-2.2.2/log_list
 $SERVERS/logstash-2.2.2/bin/logstash -f $SERVERS/logstash-2.2.2/log_list/derp.conf &
 
 exit 0

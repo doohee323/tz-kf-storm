@@ -61,7 +61,7 @@ bin/solr create -c collection1
 #http://127.0.0.1:8983/solr/#/collection1/schema-browser?field=value
 
 echo ### [5. run logstash] ############################################################################################################
-cp $SERVERS/configs/logstash/log_list/derp.conf $SERVERS/logstash-2.2.2/log_list
+cp /vagrant/configs/logstash/log_list/derp.conf $SERVERS/logstash-2.2.2/log_list
 $SERVERS/logstash-2.2.2/bin/logstash -f $SERVERS/logstash-2.2.2/log_list/derp.conf &
 
 exit 0

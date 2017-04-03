@@ -40,7 +40,7 @@ mkdir -p server/logs
 mkdir -p server/solr/collection1
 rm -Rf server/solr/collection1/conf
 cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1/conf
-cp -r $SERVERS/configs/solr/schema.xml server/solr/collection1/conf/schema.xml
+cp -r /vagrant/configs/solr/schema.xml server/solr/collection1/conf/schema.xml
 
 #rm -Rf $SERVERS/*.tgz $SERVERS/*.zip $SERVERS/*.gz $SERVERS/*.tar.gz
 
