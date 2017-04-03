@@ -16,9 +16,14 @@
 ## - run
 ```
 	vagrant up # vagrant destroy -f # vagrant reload
-	vagrant ssh
+	
+	vagrant ssh nimbus.test.com
 	cd /vagrant/scripts
-	bash tz-kf-storm_run.sh		# run servers (solr, kafka, logstash, storm)
+	bash nimbus.test.com_run.sh		# run servers (solr, kafka, logstash, storm)
+	
+	vagrant ssh supervisor.test.com
+	cd /vagrant/scripts
+	bash supervisor.test.com_run.sh		# run servers (kafka, logstash, storm)	
 	
 	* 192.168.82.170: vagrant's ip address.
 ```
@@ -27,6 +32,7 @@ http://192.168.82.170:8983	# solr
 	
 ## - deploy & test
 ```
+	vagrant ssh nimbus.test.com
 	cd /vagrant/scripts
 	bash tz-kf-storm_test.sh
 ```

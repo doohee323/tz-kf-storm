@@ -17,16 +17,16 @@ storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.case4.Topology
 #storm deactivate TestTopology4
 #storm kill TestTopology4
 #storm list
-storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.case7.Topology
+#storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.case7.Topology
 
 # http://127.0.0.1:8080/index.html
 
 echo ### [test topology] ############################################################################################################
 # 1) with  kafka-console-producer.sh
 cd $SERVERS/kafka
-bin/kafka-console-consumer.sh --zookeeper 127.0.0.1:2181 --topic logs --from-beginning
+bin/kafka-console-consumer.sh --zookeeper nimbus.test.com:2181 --topic logs --from-beginning
 
-bin/kafka-console-producer.sh --topic logs --broker 127.0.0.1:9092
+bin/kafka-console-producer.sh --topic logs --broker nimbus.test.com:9092
 #{id:1,timestamp:1441411710347,hostname:ruleset33.xdn.com,client_ip:10.115.74.54}
 
 #solr -> http://127.0.0.1:8983/solr/#/collection1/query

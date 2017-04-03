@@ -29,7 +29,7 @@ echo 'export JAVA_HOME='$JAVA_HOME >> $PROJ_DIR/.bashrc
 echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $PROJ_DIR/.bashrc
 
 cd /vagrant/scripts
-./tz-kf-storm_install.sh
+bash tz-kf-storm_install.sh
 
 echo ### [install apache solr] ############################################################################################################
 cd $SERVERS
@@ -52,8 +52,7 @@ chown -Rf vagrant:vagrant $SERVERS/solr-5.3.1
 exit 0
 
 cd /vagrant/scripts
-su vagrant
-./tz-kf-storm_run.sh
+bash nimbus.test.com_run.sh
 
 # follow tz-kf-storm_test.sh guide
 

@@ -15,16 +15,19 @@ cd $SERVERS/kafka
 sudo mkdir -p /tmp/kafka-logs
 #sudo chown -Rf mac:wheel /tmp/kafka-logs
 sudo chown -Rf vagrant:vagrant /tmp/kafka-logs
+
+echo 2 > /tmp/zookeeper/myid
+
 bin/kafka-server-start.sh ./config/server.properties &		
 # bin/zookeeper-server-stop.sh
 sleep 10
-bin/kafka-topics.sh --create --topic logs --zookeeper 127.0.0.1:2181 --partitions 1 --replication-factor 1
-#bin/kafka-topics.sh --delete --topic logs --zookeeper 127.0.0.1:2181
+bin/kafka-topics.sh --create --topic logs --zookeeper nimbus.test.com:2181 --partitions 1 --replication-factor 1
+#bin/kafka-topics.sh --delete --topic logs --zookeeper nimbus.test.com:2181
 #Created topic "logs"
-#bin/kafka-console-consumer.sh --topic logs --zookeeper 127.0.0.1:2181 
-#bin/kafka-console-producer.sh --topic logs --broker 127.0.0.1:9092
+#bin/kafka-console-consumer.sh --topic logs --zookeeper nimbus.test.com:2181 
+#bin/kafka-console-producer.sh --topic logs --broker nimbus.test.com:9092
 #testaaa
-#bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --list
+#bin/kafka-topics.sh --zookeeper nimbus.test.com:2181 --list
 
 echo ### [3. run apache-storm] ############################################################################################################
 cd $SERVERS/apache-storm-0.10.2/bin
@@ -43,28 +46,3 @@ $SERVERS/logstash-2.2.2/bin/logstash -f $SERVERS/logstash-2.2.2/log_list/derp.co
 
 exit 0
 
-# rebuild
-rm -Rf $SERVERS/kafka/kafka-logs/*
-rm -Rf $SERVERS/zookeeper-3.4.8/zookeeper/*
-rm -Rf $SERVERS/apache-storm-0.10.2/logs/*
-#ps -ef | grep zookeeper
-#ps -ef | grep storm
-#ps -ef | grep solr
-#ps -ef | grep kafka
-
-cd $SERVERS/zookeeper-3.4.8/bin
-zkServer.sh restart
-cd $SERVERS/kafka
-bin/zookeeper-server-stop.sh 
-bin/kafka-server-start.sh ./config/server.properties &
-bin/kafka-topics.sh --delete --topic logs --zookeeper 127.0.0.1:2181
-bin/kafka-topics.sh --create --topic logs --zookeeper 127.0.0.1:2181 --partitions 1 --replication-factor 1
-bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --list
-
-cd $SERVERS
-mvn clean package
-storm kill TestTopology4
-sleep 30
-
-storm jar target/tz-kf-storm-0.0.1-SNAPSHOT.jar tzkfstorm.case4.Topology
-storm list
