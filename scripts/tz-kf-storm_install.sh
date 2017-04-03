@@ -68,7 +68,7 @@ wget https://download.elastic.co/logstash/logstash/logstash-2.2.2.tar.gz
 tar xvfz logstash-2.2.2.tar.gz
 mkdir $SERVERS/logstash-2.2.2/patterns
 mkdir $SERVERS/logstash-2.2.2/log_list
-#cp /vagrant/configs/logstash/log_list/derp.conf $SERVERS/logstash-2.2.2/log_list
+#cp /vagrant/servers/configs/logstash/log_list/derp.conf $SERVERS/logstash-2.2.2/log_list
 #$SERVERS/logstash-2.2.2/bin/logstash -f $SERVERS/logstash-2.2.2/log_list/derp.conf &
 
 echo #####################################################################################################################################
