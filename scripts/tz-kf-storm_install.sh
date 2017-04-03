@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-cd ..
-export SERVERS=/home/vagrant/servers # for vagrant
-#export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
-cd scripts
-
 export PROJ_DIR=/home/vagrant
 export SRC_DIR=/vagrant/resources
 export SERVERS=/home/vagrant/servers # for vagrant
+#export SERVERS=/Users/dhong/Documents/workspace/etc/tz-kf-storm/servers # not for vagrant
 
 echo '' >> $PROJ_DIR/.bashrc
 echo 'export PATH=$PATH:.' >> $PROJ_DIR/.bashrc
@@ -34,12 +30,7 @@ sudo service ssh restart
 
 PATH=$PATH:.:$SERVERS/apache-storm-0.10.2/bin
 
-#rm -Rf $SERVERS/*.tgz $SERVERS/*.zip $SERVERS/*.gz $SERVERS/*.tar.gz
-rm -Rf $SERVERS/zookeeper-3.4.8
-rm -Rf $SERVERS/kafka
-rm -Rf $SERVERS/apache-storm-0.10.2
-rm -Rf $SERVERS/solr-5.3.1
-rm -Rf $SERVERS/logstash-2.2.2
+mkdir -p $SERVERS
 
 echo ### [1. install zookeeper] ############################################################################################################
 cd $SERVERS
