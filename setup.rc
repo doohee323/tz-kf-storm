@@ -2,4 +2,3 @@
 
 cfg_ip_nimbus.test.com="192.168.82.170"
 cfg_ip_supervisor.test.com="192.168.82.171"
-cfg_ip_supervisor2.test.com="192.168.82.172"

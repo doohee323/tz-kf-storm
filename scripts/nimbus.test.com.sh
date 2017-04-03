@@ -5,7 +5,6 @@ echo '' >> /etc/hosts
 echo '# for vm' >> /etc/hosts
 echo '192.168.82.170	nimbus.test.com' >> /etc/hosts
 echo '192.168.82.171	supervisor.test.com' >> /etc/hosts
-echo '192.168.82.172	supervisor2.test.com' >> /etc/hosts
 
 apt-get -y -q update 
 apt-get install software-properties-common python-software-properties -y

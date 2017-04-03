@@ -21,7 +21,6 @@ echo '' >> /etc/hosts
 echo '# for vm' >> /etc/hosts
 echo '192.168.82.170	nimbus.test.com' >> /etc/hosts
 echo '192.168.82.171	supervisor.test.com' >> /etc/hosts
-echo '192.168.82.172	supervisor2.test.com' >> /etc/hosts
 
 ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
 cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
@@ -51,7 +50,6 @@ cp -r conf/zoo_sample.cfg conf/zoo.cfg
 echo '' >> conf/zoo.cfg
 echo 'nimbus.test.com=zookeeper1:2888:3888' >> conf/zoo.cfg
 echo 'supervisor.test.com=zookeeper2:2888:3888' >> conf/zoo.cfg
-echo 'supervisor2.test.com=zookeeper3:2888:3888' >> conf/zoo.cfg
 sed -ie "s/dataDir/#dataDir/g" conf/zoo.cfg
 echo 'dataDir='$SERVERS'/zookeeper-3.4.8/zookeeper' >> conf/zoo.cfg
 mkdir -p logs
@@ -71,7 +69,6 @@ echo '' >> conf/storm.yaml
 echo 'storm.zookeeper.servers:' >> conf/storm.yaml
 echo '    - "nimbus.test.com"' >> conf/storm.yaml
 echo '    - "supervisor.test.com"' >> conf/storm.yaml
-echo '    - "supervisor2.test.com"' >> conf/storm.yaml
 echo 'nimbus.host: "nimbus.test.com"' >> conf/storm.yaml
 
 echo ### [4. install logstash] ############################################################################################################
