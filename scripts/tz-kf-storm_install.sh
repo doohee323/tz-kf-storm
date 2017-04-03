@@ -66,7 +66,8 @@ wget http://archive.apache.org/dist/lucene/solr/5.3.1/solr-5.3.1.zip
 unzip solr-5.3.1.zip
 cd solr-5.3.1
 mkdir -p server/logs
-mkdir -p server/solr/collection1/conf
+mkdir -p server/solr/collection1
+rm -Rf server/solr/collection1/conf
 cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1/conf
 cp -r $SERVERS/configs/solr/schema.xml server/solr/collection1/conf/schema.xml
 

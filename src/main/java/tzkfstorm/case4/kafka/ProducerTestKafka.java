@@ -19,7 +19,7 @@ public class ProducerTestKafka {
 
 	private static final Log log = LogFactory.getLog(ProducerTestKafka.class);
 
-//	private static final String KAFKA_HOST_PORT = "192.168.82.150:9092"; // to vagrant
+//	private static final String KAFKA_HOST_PORT = "192.168.82.170:9092"; // to vagrant
 	private static final String KAFKA_HOST_PORT = "localhost:9092";	// to local
 	private static final String TOPIC = "logs";
 
