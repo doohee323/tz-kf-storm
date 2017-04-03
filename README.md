@@ -15,16 +15,18 @@
 
 ## - run
 ```
-	vagrant up # vagrant destroy -f # vagrant reload
+	1. installations
+		vagrant up # vagrant destroy -f # vagrant reload
 	
-	vagrant ssh nimbus.test.com
-	cd /vagrant/scripts
-	bash nimbus.test.com_run.sh		# run servers (solr, kafka, logstash, storm)
-	
-	vagrant ssh supervisor.test.com
-	cd /vagrant/scripts
-	bash supervisor.test.com_run.sh		# run servers (kafka, logstash, storm)	
-	
+	2. run servers
+		vagrant ssh nimbus.test.com
+		cd /vagrant/scripts
+		bash nimbus.test.com_run.sh		# run servers (solr, kafka, logstash, storm)
+		
+		vagrant ssh supervisor.test.com
+		cd /vagrant/scripts
+		bash supervisor.test.com_run.sh		# run servers (kafka, logstash, storm)	
+		
 	* 192.168.82.170: vagrant's ip address.
 ```
 http://192.168.82.170:8080	# storm ui
