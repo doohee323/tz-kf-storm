@@ -28,25 +28,16 @@ bin/kafka-topics.sh --create --topic logs --zookeeper 127.0.0.1:2181 --partition
 
 echo ### [3. run apache-storm] ############################################################################################################
 cd $SERVERS/apache-storm-0.10.2/bin
-storm nimbus &
+#storm nimbus &
 storm supervisor &
-storm ui &
-storm logviewer &
+#storm ui &
+#storm logviewer &
 
 #http://127.0.0.1:8080/index.html
 #ll /Users/mac/apache-storm-0.10.2/logs
 #http://127.0.0.1:8000/log?file=storm-kafka-topology-2-1456339787-worker-6700.log
 
-echo ### [4. run apache solr] ############################################################################################################
-cd $SERVERS/solr-5.3.1
-bin/solr start # bin/solr restart
-mkdir -p server/solr/collection1
-bin/solr create -c collection1
-
-#http://127.0.0.1:8983/solr/#/collection1
-#http://127.0.0.1:8983/solr/#/collection1/schema-browser?field=value
-
-echo ### [5. run logstash] ############################################################################################################
+echo ### [4. run logstash] ############################################################################################################
 cp $SERVERS/configs/logstash/log_list/derp.conf $SERVERS/logstash-2.2.2/log_list
 $SERVERS/logstash-2.2.2/bin/logstash -f $SERVERS/logstash-2.2.2/log_list/derp.conf &
 

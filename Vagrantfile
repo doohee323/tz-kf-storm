@@ -5,7 +5,7 @@ require_relative './bootstrap'
 
 Vagrant.configure("2") do |config|
    config.vm.provider "virtualbox" do |v|
-     v.customize ["modifyvm", :id, "--cpus", "2"]
+     v.customize ["modifyvm", :id, "--cpus", "1"]
    end
 
   $config['ip'].each do | host_name, host_ip |
@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
       
       node.vm.provider :virtualbox do |vb|
          vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
-         vb.customize ["modifyvm", :id, "--memory", "2048"]
+         vb.customize ["modifyvm", :id, "--memory", "1024"]
       end
     end
   end

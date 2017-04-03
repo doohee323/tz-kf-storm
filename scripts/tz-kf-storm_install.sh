@@ -16,11 +16,12 @@ echo 'export SRC_DIR='$SRC_DIR >> $PROJ_DIR/.bashrc
 echo 'export SERVERS='$SERVERS >> $PROJ_DIR/.bashrc
 source $PROJ_DIR/.bashrc
 
-## change hosts
-#echo '' >> /etc/hosts
-#echo '# for vm' >> /etc/hosts
-#echo '127.0.0.1	local1.test.com' >> /etc/hosts
-#echo '127.0.0.1	local2.test.com' >> /etc/hosts
+# change hosts
+echo '' >> /etc/hosts
+echo '# for vm' >> /etc/hosts
+echo '192.168.82.170	nimbus.test.com' >> /etc/hosts
+echo '192.168.82.171	supervisor.test.com' >> /etc/hosts
+echo '192.168.82.172	supervisor2.test.com' >> /etc/hosts
 
 ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
 cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
@@ -48,8 +49,9 @@ tar xvzf zookeeper-3.4.8.tar.gz
 cd zookeeper-3.4.8
 cp -r conf/zoo_sample.cfg conf/zoo.cfg
 echo '' >> conf/zoo.cfg
-echo 'local1.test.com=zookeeper1:2888:3888' >> conf/zoo.cfg
-echo 'local2.test.com=zookeeper2:2888:3888' >> conf/zoo.cfg
+echo 'nimbus.test.com=zookeeper1:2888:3888' >> conf/zoo.cfg
+echo 'supervisor.test.com=zookeeper2:2888:3888' >> conf/zoo.cfg
+echo 'supervisor2.test.com=zookeeper3:2888:3888' >> conf/zoo.cfg
 sed -ie "s/dataDir/#dataDir/g" conf/zoo.cfg
 echo 'dataDir='$SERVERS'/zookeeper-3.4.8/zookeeper' >> conf/zoo.cfg
 mkdir -p logs
@@ -67,24 +69,12 @@ tar -xzf apache-storm-0.10.2.tar.gz
 cd apache-storm-0.10.2
 echo '' >> conf/storm.yaml
 echo 'storm.zookeeper.servers:' >> conf/storm.yaml
-echo '    - "local1.test.com"' >> conf/storm.yaml
-echo '    - "local2.test.com"' >> conf/storm.yaml
-echo 'nimbus.host: "127.0.0.1"' >> conf/storm.yaml
+echo '    - "nimbus.test.com"' >> conf/storm.yaml
+echo '    - "supervisor.test.com"' >> conf/storm.yaml
+echo '    - "supervisor2.test.com"' >> conf/storm.yaml
+echo 'nimbus.host: "nimbus.test.com"' >> conf/storm.yaml
 
-echo ### [4. install apache solr] ############################################################################################################
-cd $SERVERS
-wget http://archive.apache.org/dist/lucene/solr/5.3.1/solr-5.3.1.zip
-unzip solr-5.3.1.zip
-cd solr-5.3.1
-mkdir -p server/logs
-mkdir -p server/solr/collection1
-rm -Rf server/solr/collection1/conf
-cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1/conf
-cp -r $SERVERS/configs/solr/schema.xml server/solr/collection1/conf/schema.xml
-
-#rm -Rf $SERVERS/*.tgz $SERVERS/*.zip $SERVERS/*.gz $SERVERS/*.tar.gz
-
-echo ### [5. install logstash] ############################################################################################################
+echo ### [4. install logstash] ############################################################################################################
 cd $SERVERS
 wget https://download.elastic.co/logstash/logstash/logstash-2.2.2.tar.gz
 tar xvfz logstash-2.2.2.tar.gz

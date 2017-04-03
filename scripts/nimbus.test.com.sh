@@ -3,11 +3,9 @@
 # change hosts
 echo '' >> /etc/hosts
 echo '# for vm' >> /etc/hosts
-echo '127.0.0.1	local1.test.com' >> /etc/hosts
-echo '127.0.0.1	local2.test.com' >> /etc/hosts
-
-echo "Reading config...." >&2
-source /vagrant/setup.rc
+echo '192.168.82.170	nimbus.test.com' >> /etc/hosts
+echo '192.168.82.171	supervisor.test.com' >> /etc/hosts
+echo '192.168.82.172	supervisor2.test.com' >> /etc/hosts
 
 apt-get -y -q update 
 apt-get install software-properties-common python-software-properties -y
@@ -33,6 +31,19 @@ echo 'export HADOOP_PREFIX=/home/vagrant/hadoop-2.7.2' >> $PROJ_DIR/.bashrc
 
 cd /vagrant/scripts
 ./tz-kf-storm_install.sh
+
+echo ### [install apache solr] ############################################################################################################
+cd $SERVERS
+wget http://archive.apache.org/dist/lucene/solr/5.3.1/solr-5.3.1.zip
+unzip solr-5.3.1.zip
+cd solr-5.3.1
+mkdir -p server/logs
+mkdir -p server/solr/collection1
+rm -Rf server/solr/collection1/conf
+cp -r server/solr/configsets/basic_configs/conf/ server/solr/collection1/conf
+cp -r $SERVERS/configs/solr/schema.xml server/solr/collection1/conf/schema.xml
+
+#rm -Rf $SERVERS/*.tgz $SERVERS/*.zip $SERVERS/*.gz $SERVERS/*.tar.gz
 
 chown -Rf vagrant:vagrant $SERVERS/zookeeper-3.4.8
 chown -Rf vagrant:vagrant $SERVERS/kafka solr-5.3.1
